@@ -1,0 +1,31 @@
+
+class Solution {
+public:
+    string defangIPaddr(string address) {
+        int count = 0; // Count the number of dots encountered
+        for(char c : address) {
+            if(c == '.') {
+                count++;
+            }
+        }
+        
+        int originalLength = address.size();
+        int newLength = originalLength + (count * 2); // Calculate the new length of the string
+        
+        address.resize(newLength); // Resize the string to accommodate the extra characters
+        
+        // Start from the end of the original string and move characters to their new positions
+        int newIndex = newLength - 1;
+        for(int i = originalLength - 1; i >= 0; i--) {
+            if(address[i] == '.') {
+                address[newIndex--] = ']';
+                address[newIndex--] = '.';
+                address[newIndex--] = '[';
+            } else {
+                address[newIndex--] = address[i];
+            }
+        }
+        
+        return address;
+    }
+};
