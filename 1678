@@ -1,0 +1,15 @@
+class Solution {
+public:
+    string interpret(string command) {
+        string findGoalInLife="";
+        for(int i=0; i<command.size(); i++){
+            if(command[i]=='(' and command[i+1]==')'){
+                findGoalInLife.push_back('o');
+            }else if(command[i]=='G'||command[i]=='a'||command[i]=='l'){
+                findGoalInLife.push_back(command[i]);
+            }
+        }
+
+        return findGoalInLife;
+    }
+};
